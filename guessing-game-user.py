@@ -9,12 +9,12 @@ def computer_guess(x):
             guess = random.randint(low, high)
         else:
             guess = low #this could also be high,since low = 
-        feedback = input(f"Is {guess} too high (H)?, too low (L)? or corrct (C)?? ").lower
+        feedback = input(f"Is {guess} too high (H)?, too low (L)? or correct (C)?? ").lower()
         if feedback == "h":
-            guess = guess  -1
+            high = guess  - 1
         elif feedback == "l":
             low = guess + 1
     print(f"yie yie, you did it, another banger!!!, for guessing {guess} as the correct number!. ay3kooo :) ")
 
-computer_guess(10)
+computer_guess(1000)
  
