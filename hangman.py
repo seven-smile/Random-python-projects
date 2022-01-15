@@ -28,7 +28,7 @@ def hangman():
 
     #getting user input
 
-    while len(word_letters) > 0 and lives > 0:
+    while (len(word_letters) > 0) and (lives > 0):
 
         #letters used
 
