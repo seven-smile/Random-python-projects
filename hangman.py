@@ -16,9 +16,10 @@ def get_valid_word(words):
 
 def hangman():
 
-    word = get_valid_word(words)
+    word = get_valid_word(words).upper()
+    print(word)
 
-    word_letters = set(word) # letters in the word
+    word_letters = list(word) # letters in the word
 
     alphabet = set(string.ascii_uppercase)
     
@@ -36,9 +37,16 @@ def hangman():
 
         print("You have ", lives, "lives left and You have used these letters: ", " ".join(used_letters))
 
-        # what current word is (that is W -R D) 
+        # what current word is (that is W -R D)
+        word_list = [] 
+        for letter in word:
+            if letter in used_letters:
+                word_list.append(letter)
+            else: 
+                word_list.append("-")
 
-        word_list = [letter if letter in used_letters else "-" for letter in word]
+        # word_list = [letter if letter in used_letters else "-" for letter in word_letters]
+        print(word_list)
 
         print("current word: ", " ".join(word_list))
 
@@ -63,6 +71,10 @@ def hangman():
         else:
 
             print("Invalid character. Please try again")
+
+        for i in used_letters:
+            if i in word:
+                break
 
     # gets here when len(word_letters) == 0 or when lives == 0
     if lives == 0:
