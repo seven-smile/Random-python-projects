@@ -18,4 +18,6 @@ this repository contain ramdom basic python projects.
 	the secret number is chosen by the user and the computer has to 
 	guess what number it is, from a range of numbers.
 
-4. Rock Paper Scissors =>  this is a step up from the above games where 		both the computer and the user compete amongs themsleve.
+4. Rock Paper Scissors =>  this is a step up from the above games where 		both the computer and the user compete amongs themsleve. 
+
+something some
