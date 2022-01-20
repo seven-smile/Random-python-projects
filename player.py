@@ -27,7 +27,7 @@ class HumanPlayer(Player):
         valid_square = False
         val = None
         while not valid_square:
-            square = input(self.letter + "\"s turn. Input move(0-9):")
+            square = input(self.letter + "\"s turn. Input move(0-8):")
             # we are going to check that this is a correct value by trying to cast 
             # it to an integer, and if it's not, then we say it's invalid
             #if that spot is not available on the board, we also say it's invalid
@@ -39,3 +39,15 @@ class HumanPlayer(Player):
             except ValueError:
                 print('invalid square. Try again.')
         return val
+
+def GeniusComputerPlayer(Player):
+    def __init__(self, letter):
+        super().__init__(letter)
+
+    def get_move(self, game):
+        if len(game.available_move()) == 9:
+            square = random.choice(game.available_moves()) # randomly choose one
+        else:
+            # get the square based off the minimax algorithm
+            square = self.minimax(game, self.letter)
+        return square
