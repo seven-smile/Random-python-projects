@@ -1,3 +1,6 @@
+import random
+import time
+from tracemalloc import start
 # implementation of the binary search pattern algorithm!
 
 #  proving that binary search is faster than the normal(naive) search.
@@ -13,7 +16,7 @@ def naive_search(l, target):
     for i in range(len(l)):
         if l[i] == target:
             return i
-        return -1
+    return -1
 
 # binary search used the divide and conquer approach 
 # we will leverage that our list is sorted.
@@ -43,3 +46,22 @@ if __name__==" __main__":
     target = 10
     print(naive_search(l, target))
     print(binary_search(l, target)) 
+
+    lenght =  10000
+    # building a sorted list of lenght 10000
+    sorted_list = set()
+    while len(sorted_list) < lenght:
+        sorted_list.add(random.randint(-3*lenght, 3*lenght))
+    sorted_list = sorted(list(sorted_list))
+    
+    start = time.time()
+    for target in sorted_list:
+        naive_search(sorted_list, target)
+    end = time.time()
+    print("Naive Search Time: ", (end - start)/lenght, "seconds")
+
+    start = time.time()
+    for target in sorted_list:
+        binary_search(sorted_list, target)
+    end = time.time()
+    print("Binary Search Time: ", (end - start)/lenght, "seconds")
