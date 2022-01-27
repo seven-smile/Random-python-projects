@@ -1,9 +1,6 @@
-from pydoc import visiblename
 import random
-from re import T
-import string
-from textwrap import indent
-from turtle import left
+import re
+
 # lets create a board objects to represent the minesweeper game
 # this is so that we can say "create a new board object", or
 # "dig here", or " render this game for this object"
@@ -96,7 +93,7 @@ class Board:
         # dig at a location with neighboring bombs -> finish dig 
         # dig at location with no neighboring bombs -> recursively dig neighbors!
 
-        self.dug.add(row, col) #keep t rack that we dug there
+        self.dug.add(row, col) #keep track that we dug there
 
         if self.board[row][col] == "*":
             return False
@@ -172,4 +169,34 @@ def play(dim_size = 10, num_bombs=10):
         # step 3a: if location is a bomb, show game-over message
         # step 3b:  if location isnot a bomb,dig recursivly untileach square is a t least next to a bomb
         # step 4: repeat step 2 and 3a/b until there are no more places to dig --> VICTORY!!!
-        pass 
+        safe = True
+        
+
+
+        while len(board.dug) < board.dim_size **2 -num_bombs:
+            print(board)
+            # 0,0 or 0, 0 or 0,   0
+            user_input = re.split(',(\\s)*', input ('where would you lilketo dig? Input as row, col: '))
+            row, col = int(user_input[0]), int(user_input[-1])
+            if row < 0 or row >= Board.dim_size or col < 0 or col >= dim_size:
+                print('Invalid Location. Try again.')
+                continue
+
+            # if it's valid, we dig
+            safe = board.dig(row, col)
+            if not safe:
+                # dug a bomb
+                break # gameover
+            
+
+        # 2 ways to end the loop.
+        if safe:
+            print('CONGRATULATIONS!!! YOU ARE VICTORIOUS!')
+        else:
+            print('SORRY GAME OVER :=(')
+            # now we reveal the whole board!
+            board.dug = [(r, c) for r in range(board.dim_size) for c in range(board.dim_size)]
+            print(board)
+
+        if __name__ == ' __main__':
+            play()
