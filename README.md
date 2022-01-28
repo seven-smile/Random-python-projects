@@ -19,3 +19,13 @@ this repository contain ramdom basic python projects.
 	guess what number it is, from a range of numbers.
 
 4. Rock Paper Scissors =>  this is a step up from the above games where 		both the computer
+
+5. hangman...
+
+6. Tictactoe...
+
+7. minesweeper...
+
+8. sudoku...
+
+
