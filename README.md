@@ -28,4 +28,3 @@ this repository contain ramdom basic python projects.
 
 8. sudoku....
 
-@
