@@ -98,7 +98,14 @@ def aplpy_kernel(image, kernel):
 def combine_images(image1, image2):
     # let's combine two images using the squared sum of squares: value = sqrt(value_1+=2, value)
     # size of image1, and image2 Must be the Same
-    pass
+    x_pixels, y_pixels, num_channels = image1.array.shape
+    new_im = Image(x_pixels = x_pixels, y_pixels = y_pixels, num_channels = num_channels)
+
+    for x in range(x_pixels):
+        for y in range(y_pixels):
+            for c in range(num_channels):
+                new_im.array[x, y, c] = (image1.array[x, y, c]**2 + image2.array[x, y, c]**2)**0.5
+    return new_im
 
 if __name__ == ' __main__':
     lake = Image(filename = 'lake.png')
@@ -129,18 +136,20 @@ if __name__ == ' __main__':
     # blur_15.write_image('blur_k15.png')
 
     # let's apply a sobel edge detection kernel on the x and y axis
-    sobel_x_kernel = np.array([
-        [1, 2, 1],
-        [0, 0, 0]
-        [-1, -2, -1], 
-    ])
-    sobel_y_kernel = np.array([
-        [1, 0, -1],
-        [2, 0, -2],
-        [1, 0, -1]
-    ])
+    # sobel_x_kernel = np.array([
+    #     [1, 2, 1],
+    #     [0, 0, 0]
+    #     [-1, -2, -1], 
+    # ])
+    # sobel_y_kernel = np.array([
+    #     [1, 0, -1],
+    #     [2, 0, -2],
+    #     [1, 0, -1]
+    # ])
 
-sobel_x = aplpy_kernel(city, sobel_x_kernel)
-sobel_x.write_image('edge_x.png')
-sobel_y = aplpy_kernel(city, sobel_y_kernel)
-sobel_y.write_image('edge_y.png')
+    # sobel_x = aplpy_kernel(city, sobel_x_kernel)
+    # sobel_x.write_image('edge_x.png')
+    # sobel_y = aplpy_kernel(city, sobel_y_kernel)
+    # sobel_y.write_image('edge_y.png')   
+
+    # let's combine all this and make an edge detection filter
