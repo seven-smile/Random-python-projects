@@ -90,7 +90,7 @@ def solve_sudoku(puzzle):
         
         [5, -1, -1,     -1, -1, -1,     -1, -1, -1,],
         [6, 7, -1,      1, -1, 5,       -1, 4, -1],
-        [1, -1, 9,      -1, -1, -1,     2, -1, -1],
+        [1, -1, 9,      -1, -1, -1,     2, -1, -1]
         ]
     print(solve_sudoku(example_board))
     print(example_board)
