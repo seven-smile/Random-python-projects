@@ -59,15 +59,38 @@ def blur(image, kernel_size):
 
     return new_im
                      
+# note:
+# this blur inplemented above is a kernel of size n, where each value is 1/n!
+# for example, k=3 would be thid kernel:
+# [1/3   1/3 1/3]
+# [1/3   1/3 1/3]
+# [1/3   1/3 1/3]
 
 def aplpy_kernel(image, kernel):
-    # the kernel should be a 2D array  that represents the kernel we'll use!
+    # the kernel should be a numpy 2D array  that represents the kernel we'll use!
     # for the sake of simplicity of this implemnentatino, let us assume the Kenel is square
     # for example the sobel x kernel (detecting horizontal edges) is as follows:
     # [1 0 -1]
     # [2 0 -2]
     # [1 0 -1]
-    pass
+    x_pixels, y_pixels, num_channels = image.array.shape
+    new_im = Image(x_pixels = x_pixels, y_pixels = y_pixels, num_channels = num_channels)
+
+    kernel_size = kernel.shape[0]
+    neighbor_range = kernel_size // 2 # how many neighbors to one side we need to look at
+    
+    for x in range(x_pixels):
+        for y in range(y_pixels):
+            for c in range(num_channels):
+                total = 0
+                for x_i in range(max(0,x-neighbor_range), min(x_pixels-1, x+neighbor_range) +1):
+                    for y_i in range(max(0, y-neighbor_range), min(y_pixels-1, y+neighbor_range) +1):
+                        #  we need to find which value of the kernel this corresponds to
+                        x_k = x_i + neighbor_range - x
+                        y_k = y_i + neighbor_range - y
+                        kernel_val = kernel[x_k, y_k]
+                        total += image.array[x_i, y_i, c] * kernel_val
+
 
 def combine_images(image1, image2):
     # let's combine two images using the squared sum of squares: value = sqrt(value_1+=2, value)
