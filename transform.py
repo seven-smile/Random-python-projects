@@ -90,6 +90,9 @@ def aplpy_kernel(image, kernel):
                         y_k = y_i + neighbor_range - y
                         kernel_val = kernel[x_k, y_k]
                         total += image.array[x_i, y_i, c] * kernel_val
+                new_im.array[x, y, c] = total
+    
+    return new_im
 
 
 def combine_images(image1, image2):
@@ -105,22 +108,39 @@ if __name__ == ' __main__':
     # Brightened_im = adjsut_brightness(lake, 1.7)
     # brightened_im.write_image('brightened.png)
 
-    #darken
+    # darken
     # darkened_im = adjust_brightness(lake, 0.3)
     # darkened_im.write_image('darkened2.png')
 
-    #adjust the contrast for the lake
+    # adjust the contrast for the lake
     # incr_contrast = adjust_contrast(lake, 2, 0.5)
     # incr_contrast.write_image('increased_contrast.png')
 
-    # # decreasing the contrast of the lake
+    # decreasing the contrast of the lake
     # decr_contrast = adjust_contrast(lake, 0.5   , 0.5)
     # decr_contrast.write.image('decreased_contrast.png')
 
     # blur with Kernel 3
-    blur_3 = blur(city, 3)
-    blur_3.write_image('blur_k3.png')
+    # blur_3 = blur(city, 3)
+    # blur_3.write_image('blur_k3.png')
 
-    # blur with Kernel 15
-    blur_15 = blur(city, 15)
-    blur_15.write_image('blur_k15.png')
+    # # blur with Kernel 15
+    # blur_15 = blur(city, 15)
+    # blur_15.write_image('blur_k15.png')
+
+    # let's apply a sobel edge detection kernel on the x and y axis
+    sobel_x_kernel = np.array([
+        [1, 2, 1],
+        [0, 0, 0]
+        [-1, -2, -1], 
+    ])
+    sobel_y_kernel = np.array([
+        [1, 0, -1],
+        [2, 0, -2],
+        [1, 0, -1]
+    ])
+
+sobel_x = aplpy_kernel(city, sobel_x_kernel)
+sobel_x.write_image('edge_x.png')
+sobel_y = aplpy_kernel(city, sobel_y_kernel)
+sobel_y.write_image('edge_y.png')
