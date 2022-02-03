@@ -31,12 +31,34 @@ def adjust_contrast(image, factor, mid = 0.5):
             for c in range(num_channels):
                 new_im.array[x, y, c] = (image.array[x, y, c] - mid) * factor + mid
 
-# 
+    # Vectorized
+    # new_im.array = image.array * factor + mid
+
+    return new_im
+
 def blur(image, kernel_size):
     # kernel size is the nu,ber of pixels to tske into account when app
     # (ie kerel_size -3 would be neighbors to the left/right, top/bottom)
     # kernel size should always be an *odd* number
-    pass
+    x_pixels, y_pixels, num_channels = image.array.shape
+    new_im = Image(x_pixels = x_pixels, y_pixels = y_pixels, num_channels = num_channels)
+
+    neighbor_range = kernel_size // 2 # how many neighbors to one side we need to look at
+    
+    for x in range(x_pixels):
+        for y in range(y_pixels):
+            for c in range(num_channels):
+                # we are going to use a naive implementation of iterating through each neighbor
+                # and summing
+                # there is a faster way but this is more strightfoward to understand
+                total = 0
+                for x_i in range(max(0,x-neighbor_range), min(x_pixels-1, x+neighbor_range) +1):
+                    for y_i in range(max(0, y-neighbor_range), min(y_pixels-1, y+neighbor_range) +1):
+                        total += image.array[x_i, y_i, c]
+                new_im.array[x, y, c] = total / (kernel_size **2) # Average
+
+    return new_im
+                     
 
 def aplpy_kernel(image, kernel):
     # the kernel should be a 2D array  that represents the kernel we'll use!
@@ -61,5 +83,21 @@ if __name__ == ' __main__':
     # brightened_im.write_image('brightened.png)
 
     #darken
-    darkened_im = adjust_brightness(lake, 0.3)
-    darkened_im.write_image('darkened2.png')
+    # darkened_im = adjust_brightness(lake, 0.3)
+    # darkened_im.write_image('darkened2.png')
+
+    #adjust the contrast for the lake
+    # incr_contrast = adjust_contrast(lake, 2, 0.5)
+    # incr_contrast.write_image('increased_contrast.png')
+
+    # # decreasing the contrast of the lake
+    # decr_contrast = adjust_contrast(lake, 0.5   , 0.5)
+    # decr_contrast.write.image('decreased_contrast.png')
+
+    # blur with Kernel 3
+    blur_3 = blur(city, 3)
+    blur_3.write_image('blur_k3.png')
+
+    # blur with Kernel 15
+    blur_15 = blur(city, 15)
+    blur_15.write_image('blur_k15.png')
