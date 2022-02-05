@@ -128,4 +128,52 @@ jbjk b DOMInputSourceknosdoinlk   duoihsd uosdhu km sjhdonl  sudl jsdljn os fbos
 jvibvd
    Irvu 
    SAXNotSupportedException soi Nf ;
-   sf 
+   sf  
+bis\nds b
+def solve_sudoku(puzzle):
+    # solve sudoku using backtracking
+    # our puzzle is a list of lists, where each inner list is a row in our sudoku puzzle
+    # return whether a solution exist
+    # mutates puzzle t
+
+    ss in range(1, 10): # range(1, 10) is 1, 2, 3,....9
+        # step 3: check if this is valid guess
+        if is_valid(puzzle, guess, row, col):
+            # step 3.1: if  this is valid, then place that guess on the puzzle!
+            puzzle[row][col] = guess
+            # now recurse using this puzzle!
+            # step 4: recussively call function
+            if solve_sudoku(puzzl
+            ss in range(1, 10): # range(1, 10) is 1, 2, 3,....9
+        # step 3: check if this is valid guess
+        if is_valid(puzzle, guess, row, col):
+            # step 3.1: if  this is valid, then place that guess on the puzzle!
+            puzzle[row][col] = guess
+            # now recurse using this puzzle!
+            # step 4: recussively call function
+            if solve_sudoku(puzzl
+            ss in range(1, 10): # range(1, 10) is 1, 2, 3,....9
+        # step 3: check if this is valid guess
+        if is_valid(puzzle, guess, row, col):
+            # step 3.1: if  this is valid, then place that guess on the puzzle!
+            puzzle[row][col] = guess
+            # now recurse using this puzzle!
+            # step 4: recussively call function
+            if solve_sudoku(puzzl
+            ss in range(1, 10): # range(1, 10) is 1, 2, 3,....9
+        # step 3: check if this is valid guess
+        if is_valid(puzzle, guess, row, col):
+            # step 3.1: if  this is valid, then place that guess on the puzzle!
+            puzzle[row][col] = guess
+            # now recurse using this puzzle!
+            # step 4: recussively call function
+            if solve_sudoku(puzzl
+            ss in range(1, 10): # range(1, 10) is 1, 2, 3,....9
+        # step 3: check if this is valid guess
+        if is_valid(puzzle, guess, row, col):
+            # step 3.1: if  this is valid, then place that guess on the puzzle!
+            puzzle[row][col] = guess
+            # now recurse using this puzzle!
+            # step 4: recussively call function
+            if solve_sudoku(puzzlido)dfomkmcd
+            
