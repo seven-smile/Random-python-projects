@@ -30,3 +30,5 @@ this repository contain ramdom basic python projects.
 
 9. PyPhotoshop => Python implementation of image filters. Use Python to 		adjust brightness and contrast, add blur, and detect edges!
 
+10. 
+
