@@ -1,7 +1,4 @@
 from re import I
-from tkinter import N
-from xml.dom.xmlbuilder import DOMInputSource
-from xml.sax import SAXNotSupportedException
 from image import Image
 import numpy as np
 
