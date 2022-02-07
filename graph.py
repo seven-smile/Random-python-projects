@@ -3,7 +3,7 @@ import random
 class Vertex(object):
     def __init__(self, value):
         self.value = value
-        self.adjacent = {}  # nodes that it points to
+        self.adjacent = {}  # nodes it points to
         self.neighbors = []
         self.neighbors_weights = []
 
