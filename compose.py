@@ -39,7 +39,7 @@ def make_graph(words):
         if prev_word:  # prev word should be a Vertex
             # check if edge exists from previous word to current word
             prev_word.increment_edge(word_vertex)
-
+        # set our word to the 
         prev_word = word_vertex
     # now remembering that we want to generate a probabilty mappig before composing 
     # this might just be where toimplement such
@@ -58,6 +58,7 @@ def compose(g, words, length=50):
 
 
 def main():
+    # step 1: get word from text
     words = get_words_from_text('texts/hp_sorcerer_stone.txt')
 
     # for song in os.listdir('songs/{}'.format(artist)):
