@@ -39,7 +39,7 @@ def make_graph(words):
         if prev_word:  # prev word should be a Vertex
             # check if edge exists from previous word to current word
             prev_word.increment_edge(word_vertex)
-        # set our word to the 
+        # set our word to the privious word and iterate
         prev_word = word_vertex
     # now remembering that we want to generate a probabilty mappig before composing 
     # this might just be where toimplement such
