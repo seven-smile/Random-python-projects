@@ -12,8 +12,11 @@ def get_words_from_text(text_path):
         # include the following line if you are doing song lyrics
         # text = re.sub(r'\[(.+)\]', ' ', text)
 
-        text = ' '.join(text.split())
-        text = text.lower()
+        text = ' '.join(text.split()) # we are turining whitespaces into just spaces
+        text = text.lower() # making everything lowercase to compare stuffs
+        # now we could be complex and deal with everything punctuations, but there are cases where 
+        # you might add a period such as [Mr, Blackish],but that is not really 
+        # a punctuation, so we just remove all punctuations
         text = text.translate(str.maketrans('', '', string.punctuation))
 
     words = text.split()
