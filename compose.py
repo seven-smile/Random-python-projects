@@ -41,7 +41,8 @@ def make_graph(words):
             prev_word.increment_edge(word_vertex)
 
         prev_word = word_vertex
-
+    # now remembering that we want to generate a probabilty mappig before composing 
+    # this might just be where toimplement such
     g.generate_probability_mappings()
     
     return g
